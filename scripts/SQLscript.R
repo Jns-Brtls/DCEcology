@@ -74,7 +74,8 @@ surveys %>%
   theme(legend.position = "none")
 
 
-
+# Save the surveys2002 into a csv file in your data folder
+write_csv(surveys2002, path = "data/surveys2002.csv")
 
 
 
