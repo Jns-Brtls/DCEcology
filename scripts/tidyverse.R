@@ -46,3 +46,18 @@ surveys_hindfoot_half <- surveys %>%
   select(species_id, hindfoot_half)
   
 head(surveys_hindfoot_half)
+
+sum_surv <- surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(sex, species_id) %>% 
+  summarize(mean_length = mean(weight, na.rm = TRUE))
+
+write_csv(sum_surv, path = "plots/surveys_sex_species_weights.csv")
+
+
+
+
+
+
+
+
