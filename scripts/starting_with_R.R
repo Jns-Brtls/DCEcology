@@ -82,7 +82,26 @@ plot(surveys$species_id)
 #date
 library(lubridate)
 
+my_date <- ymd("2015-01-01")
+str(my_date)
 
+my_date2 <- ymd(paste("2015","1","1", sep = "-"))
+
+paste(surveys$month, surveys$month, surveys$day, sep = "-")
+ymd(paste(surveys$month, surveys$month, surveys$day, sep = "-"))
+
+surveys$date <- ymd(paste(surveys$month, surveys$month, surveys$day, sep = "-"))
+str(surveys)
+
+
+#look for missing date (129 failed to parse)
+is_missing_date <- is.na(surveys$date)
+is_missing_date
+sum(is_missing_date) # is 129
+
+date_columns <- c("year", "month", "day")
+missing_dates <- surveys[is_missing_date, date_columns]
+head(missing_dates)
 
 
 
